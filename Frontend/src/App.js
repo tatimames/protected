@@ -121,7 +121,7 @@ const App = () => {
           )}
         </section>
       </main>
-      <footer style={{ textAlign: 'center', padding: '1rem', marginTop: '2rem', backgroundColor: '#343a40', color: 'white' }}>
+      <footer>
         &copy; Protected 2025 Ad Insights Dashboard.
         </footer>
     </div>
