@@ -1,0 +1,8 @@
+# Exclude unnecessary files and directories
+node_modules/
+build/
+.env
+.DS_Store
+.idea/
+.vscode/
+.git

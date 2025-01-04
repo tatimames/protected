@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css';
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:5000";
+
 const App = () => {
   const [anomalies, setAnomalies] = useState([]);
   const [summary, setSummary] = useState(null);
@@ -15,7 +17,7 @@ const App = () => {
 
   const fetchAnomalies = async () => {
     try {
-      const response = await axios.get('/anomalies');
+      const response = await axios.get(`${API_BASE_URL}/anomalies`);
       setAnomalies(response.data.short_titles.map(post => ({ ...post, reason: 'Short Title' }))
         .concat(response.data.duplicate_titles.flatMap(user =>
           user.duplicates.map(title => ({ userId: user.userId, title, reason: 'Duplicate Title' }))
@@ -27,7 +29,7 @@ const App = () => {
 
   const fetchSummary = async () => {
     try {
-      const response = await axios.get('/summary');
+      const response = await axios.get(`${API_BASE_URL}/summary`);
       setSummary(response.data);
     } catch (error) {
       console.error('Error fetching summary:', error);
